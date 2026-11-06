@@ -1,0 +1,318 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Google Sans Flex", sans-serif;
+    background-color: #f4f6fa;
+    padding: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ==================== HEADER ==================== */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    padding: 20px 28px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+    background: #0f1526;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0px 16px 40px rgba(15, 21, 38, 0.15);
+}
+
+.logo {
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+.menu {
+    font-weight: normal;
+    font-size: 15px;
+    color: #e0e6ed;
+}
+
+.cart-box {
+    position: relative;
+    width: 105px;
+    height: 38px;
+}
+
+.cart-button {
+    width: 100%;
+    height: 100%;
+    background-color: #ff6b35;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    border: none;
+    border-radius: 65px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.cart-button:hover {
+    background-color: #e55a28;
+    transform: translateY(-1px);
+}
+
+.cart-badge {
+    position: absolute;
+    top: -6px;
+    right: -4px;
+    background-color: #ff526c;
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+    text-align: center;
+    border-radius: 50%;
+}
+
+/* ==================== HERO BANNER ==================== */
+.container {
+    width: 100%;
+    padding: 40px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #0f1526 0%, #1e2942 100%);
+    color: white;
+    margin-bottom: 32px;
+    box-shadow: 0px 16px 40px rgba(15, 21, 38, 0.15);
+}
+
+.subtitle {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    color: #94a3b8;
+    margin-bottom: 16px;
+    font-weight: bold;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.25;
+    margin-bottom: 4px;
+}
+
+.desc {
+    color: #cbd5e1;
+    font-size: 15px;
+    margin-top: 16px;
+    margin-bottom: 24px;
+}
+
+.nut {
+    background: #ff6b35;
+    padding: 10px 22px;
+    color: white;
+    border: none;
+    border-radius: 65px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.nut:hover {
+    background-color: #e55a28;
+    transform: translateY(-1px);
+}
+
+/* ==================== PRODUCT SECTION ==================== */
+h2 {
+    font-size: 24px;
+    color: #0f172a;
+    margin-bottom: 20px;
+}
+
+.product-list {
+    display: flex;
+    gap: 20px;
+}
+
+.product-card {
+    position: relative; 
+    flex: 1;      
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.04);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.badge {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background-color: #ff526c;
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+.product-img-box {
+    width: 100%;
+    height: 180px;           
+    background-color: #f1f5f9;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.product-img-box img {
+    max-width: 100%;              
+    max-height: 140px;
+    object-fit: contain;
+    display: block;
+}
+
+.product-card h3 {
+    font-size: 18px;
+    color: #0f172a;
+    margin-bottom: 8px;
+}
+
+.product-card .price {
+    font-weight: bold;
+    font-size: 16px;
+    color: #0f172a;
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+
+/* Tablet & Màn hình vừa (<= 768px) */
+@media screen and (max-width: 768px) {
+    body {
+        padding: 16px;
+    }
+
+    /* Header: Logo & Cart giữ hàng trên, Menu chuyển xuống dưới gọn gàng */
+    .header {
+        padding: 16px 20px;
+        flex-wrap: wrap;
+        row-gap: 14px;
+    }
+
+    .logo {
+        order: 1;
+        font-size: 16px;
+    }
+
+    .cart-box {
+        order: 2;
+    }
+
+    .menu {
+        order: 3;
+        width: 100%;
+        text-align: center;
+        font-size: 14px;
+        padding-top: 12px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Hero Banner: Giảm padding và kích thước chữ cho vừa khung hình */
+    .container {
+        padding: 28px 20px;
+        border-radius: 16px;
+        margin-bottom: 24px;
+    }
+
+    .title {
+        font-size: 24px;
+        line-height: 1.3;
+    }
+
+    .desc {
+        font-size: 14px;
+        margin-top: 12px;
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        font-size: 20px;
+        margin-bottom: 16px;
+    }
+
+    /* Danh sách sản phẩm: chuyển sang cột dọc, full-width */
+    .product-list {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .product-card {
+        width: 100%;
+        border-radius: 16px;
+        padding: 16px;
+    }
+
+    .badge {
+        top: 24px;
+        right: 24px;
+    }
+}
+
+/* Mobile nhỏ (<= 480px) */
+@media screen and (max-width: 480px) {
+    body {
+        padding: 12px;
+    }
+
+    .header {
+        padding: 14px 16px;
+        border-radius: 14px;
+    }
+
+    .menu {
+        font-size: 13px;
+    }
+
+    .container {
+        padding: 22px 16px;
+        border-radius: 14px;
+    }
+
+    .title {
+        font-size: 20px;
+    }
+
+    .nut {
+        width: 100%;
+        text-align: center;
+        padding: 12px 20px;
+    }
+
+    .product-img-box {
+        height: 160px;
+    }
+
+    .product-img-box img {
+        max-height: 120px;
+    }
+}

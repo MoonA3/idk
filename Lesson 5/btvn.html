@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travlog - Travel Top Destination of the World</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#5D50C6',
+                        'primary-hover': '#4D40B5',
+                        accent: '#F85E9F',
+                        'accent-orange': '#FF5722',
+                        'accent-yellow': '#FACD49',
+                        dark: '#191825',
+                    },
+                    boxShadow: {
+                        'soft-purple': '0 20px 35px -10px rgba(93, 80, 198, 0.25)',
+                        'soft-pink': '0 15px 30px -8px rgba(248, 94, 159, 0.35)',
+                        'soft-orange': '0 15px 30px -8px rgba(255, 87, 34, 0.35)',
+                        'card': '0 25px 50px -12px rgba(25, 24, 37, 0.12)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Ambient peach/warm glow */
+        .ambient-glow {
+            background: radial-gradient(circle at 10% 15%, rgba(255, 225, 220, 0.7) 0%, rgba(255, 243, 235, 0.5) 30%, transparent 60%),
+                        radial-gradient(circle at 90% 85%, rgba(255, 245, 220, 0.6) 0%, transparent 50%);
+        }
+
+        /* Pulse animation for map pins */
+        @keyframes subtle-float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+        }
+
+        .floating-element {
+            animation: subtle-float 4s ease-in-out infinite;
+        }
+
+        .floating-element-delayed {
+            animation: subtle-float 4s ease-in-out infinite 2s;
+        }
+    </style>
+</head>
+
+<body class="bg-white font-sans text-dark antialiased min-h-screen selection:bg-accent selection:text-white relative ambient-glow">
+
+        <!-- ==================== HEADER / NAVBAR ==================== -->
+        <header class="w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-5 sm:py-6">
+            <div class="flex items-center justify-between">
+                
+                <!-- 1. LEFT ITEM (DESKTOP/MOBILE: Logo | TABLET: Hamburger Menu) -->
+                <!-- Desktop & Mobile: Logo on Left -->
+                <div class="flex items-center md:hidden lg:flex">
+                    <a href="#" class="flex items-center gap-3 group" aria-label="Travlog Home">
+                        <!-- Logo Icon: Circular with purple-to-pink gradient & wave -->
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-primary to-accent flex items-center justify-center shadow-md shadow-primary/20 group-hover:scale-105 transition">
+                            <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                                <path d="M4 10c3-3 5 3 8 0s5 3 8 0" />
+                                <path d="M4 15c3-3 5 3 8 0s5 3 8 0" />
+                            </svg>
+                        </div>
+                        <span class="font-extrabold text-2xl tracking-tight text-dark font-sans">Travlog</span>
+                    </a>
+                </div>
+
+                <!-- Tablet Only: Hamburger Button on Left -->
+                <div class="hidden md:flex lg:hidden items-center">
+                    <button onclick="toggleMobileMenu()" class="p-2.5 rounded-xl bg-primary text-white hover:bg-primary-hover shadow-md shadow-primary/20 transition cursor-pointer" aria-label="Open Tablet Menu">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+
+
+                <!-- 2. CENTER ITEM (DESKTOP: Nav Links | TABLET: Logo | MOBILE: none) -->
+                <!-- Desktop Center: Nav Links -->
+                <nav class="hidden lg:flex items-center gap-9 text-[15px] font-medium text-slate-500">
+                    <a href="#" class="font-bold text-dark hover:text-primary transition-colors">Home</a>
+                    <a href="#" class="hover:text-primary transition-colors">Discover</a>
+                    <a href="#" class="hover:text-primary transition-colors">Special Deals</a>
+                    <a href="#" class="hover:text-primary transition-colors">Contact</a>
+                </nav>
+
+                <!-- Tablet Center: Logo -->
+                <div class="hidden md:flex lg:hidden items-center">
+                    <a href="#" class="flex items-center gap-3 group" aria-label="Travlog Home">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-primary to-accent flex items-center justify-center shadow-md shadow-primary/20">
+                            <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                                <path d="M4 10c3-3 5 3 8 0s5 3 8 0" />
+                                <path d="M4 15c3-3 5 3 8 0s5 3 8 0" />
+                            </svg>
+                        </div>
+                        <span class="font-extrabold text-2xl tracking-tight text-dark font-sans">Travlog</span>
+                    </a>
+                </div>
+
+
+                <!-- 3. RIGHT ITEM (DESKTOP & TABLET: Log In + Sign Up | MOBILE: Hamburger Button) -->
+                <!-- Desktop & Tablet Right: Auth Buttons -->
+                <div class="hidden md:flex items-center gap-6">
+                    <a href="#" class="text-[15px] font-semibold text-dark hover:text-primary transition-colors">Log In</a>
+                    <a href="#" class="px-7 py-3 text-[15px] font-bold text-white bg-primary hover:bg-primary-hover rounded-full shadow-soft-purple transition transform active:scale-95">
+                        Sign Up
+                    </a>
+                </div>
+
+                <!-- Mobile Right: Hamburger Button -->
+                <div class="flex md:hidden items-center">
+                    <button onclick="toggleMobileMenu()" class="p-2 rounded-xl bg-primary text-white hover:bg-primary-hover shadow-md shadow-primary/20 transition cursor-pointer" aria-label="Open Mobile Menu">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+
+            </div>
+        </header>
+
+        <!-- ==================== MOBILE & TABLET DRAWER MENU ==================== -->
+        <div id="mobile-drawer" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs hidden transition-opacity duration-300">
+            <div class="absolute right-0 top-0 bottom-0 w-72 sm:w-80 bg-white shadow-2xl p-6 flex flex-col justify-between transform transition-transform duration-300">
+                <div>
+                    <div class="flex items-center justify-between pb-6 border-b border-slate-100">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-primary to-accent flex items-center justify-center text-white">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                                    <path d="M4 10c3-3 5 3 8 0s5 3 8 0" />
+                                </svg>
+                            </div>
+                            <span class="font-extrabold text-xl text-dark">Travlog</span>
+                        </div>
+                        <button onclick="toggleMobileMenu()" class="p-2 text-slate-400 hover:text-dark rounded-lg cursor-pointer">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <nav class="mt-6 flex flex-col gap-4 text-base font-semibold text-slate-700">
+                        <a href="#" class="py-2 text-primary">Home</a>
+                        <a href="#" class="py-2 hover:text-primary transition">Discover</a>
+                        <a href="#" class="py-2 hover:text-primary transition">Special Deals</a>
+                        <a href="#" class="py-2 hover:text-primary transition">Contact</a>
+                    </nav>
+                </div>
+
+                <div class="pt-6 border-t border-slate-100 flex flex-col gap-3">
+                    <a href="#" class="w-full py-3 text-center font-bold text-dark border border-slate-200 rounded-full hover:bg-slate-50 transition">Log In</a>
+                    <a href="#" class="w-full py-3 text-center font-bold text-white bg-primary rounded-full shadow-soft-purple hover:bg-primary-hover transition">Sign Up</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== MAIN HERO SECTION ==================== -->
+        <main class="w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-4 pb-14 sm:pb-20 lg:pt-10 lg:pb-24">
+            
+            <!-- DESKTOP HERO CONTAINER (Có viền xanh #0084ff khi bật khung giới hạn theo đề bài) -->
+            <div class="desktop-hero-container w-full p-2 sm:p-4 lg:p-6 transition-all duration-200">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-14 lg:gap-8 items-center">
+
+                    <!-- ==================== CỘT NỘI DUNG (TEXT + BUTTONS) ==================== -->
+                    <!-- Desktop: Cột trái (Col-span 5-6), hiển thị bên trái -->
+                    <!-- Tablet & Mobile: Hiển thị bên DƯỚI ảnh (order-2), căn giữa (text-center, items-center) -->
+                    <div class="left-column-box lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1 transition-all duration-200 lg:pr-4">
+                        
+                        <!-- Pill Badge: Explore the world! 🧳 -->
+                        <div class="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-[#fdf0f5] text-accent font-bold text-xs sm:text-sm shadow-xs border border-pink-100">
+                            <span>Explore the world!</span>
+                            <!-- Luggage / Suitcase Icon -->
+                            <svg class="w-4 h-4 text-accent fill-current" viewBox="0 0 24 24">
+                                <path d="M19 7h-3V6a3 3 0 0 0-3-3h-2a3 3 0 0 0-3 3v1H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zm-9-1a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1h-4V6zm9 13H5V9h14v10z"/>
+                                <rect x="9" y="12" width="6" height="4" rx="1"/>
+                            </svg>
+                        </div>
+
+                        <!-- Main Title -->
+                        <h1 class="mt-5 sm:mt-6 text-[32px] sm:text-5xl lg:text-[54px] font-black text-dark tracking-tight leading-[1.18] sm:leading-[1.15]">
+                            Travel <span class="text-accent">top destination</span> <br class="hidden sm:inline">of the world
+                        </h1>
+
+                        <!-- Short Description -->
+                        <p class="mt-4 sm:mt-6 text-sm sm:text-base lg:text-lg text-[#191825]/60 max-w-md sm:max-w-lg leading-relaxed font-normal">
+                            We always make our customer happy by providing as many choices as possible
+                        </p>
+
+                        <!-- CTA Action Buttons -->
+                        <!-- Mobile: Buttons xếp dọc, 'Get Started' full width -->
+                        <!-- Tablet & Desktop: Buttons xếp ngang -->
+                        <div class="mt-7 sm:mt-9 w-full sm:w-auto flex flex-col sm:flex-row items-center gap-4">
+                            <!-- Button 1: Get Started -->
+                            <button class="w-full sm:w-auto px-8 py-4 bg-primary hover:bg-primary-hover text-white text-sm font-bold rounded-full shadow-soft-purple hover:shadow-lg transition transform active:scale-95 cursor-pointer">
+                                Get Started
+                            </button>
+
+                            <!-- Button 2: Watch Demo -->
+                            <button class="w-full sm:w-auto px-6 py-3.5 border border-slate-200/90 hover:border-slate-300 bg-white hover:bg-slate-50 text-dark text-sm font-bold rounded-full transition flex items-center justify-center gap-3 shadow-xs cursor-pointer group">
+                                <span class="w-7 h-7 rounded-full bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition">
+                                    <svg class="w-3.5 h-3.5 fill-current ml-0.5" viewBox="0 0 24 24">
+                                        <polygon points="5 3 19 12 5 21 5 3" />
+                                    </svg>
+                                </span>
+                                <span>Watch Demo</span>
+                            </button>
+                        </div>
+
+                    </div>
+
+
+                    <!-- ==================== CỘT HÌNH ẢNH COLLAGE & DECORATION ==================== -->
+                    <!-- Desktop: Cột phải (Col-span 6-7), hiển thị bên phải -->
+                    <!-- Tablet & Mobile: Hiển thị bên TRÊN nội dung text (order-1), căn giữa -->
+                    <div class="right-column-box lg:col-span-6 flex justify-center lg:justify-end relative order-1 lg:order-2 transition-all duration-200">
+                        
+                        <!-- Wrapper chứa toàn bộ 3 ảnh & các icon nổi -->
+                        <div class="relative w-full max-w-[340px] sm:max-w-[480px] lg:max-w-[540px] py-4 sm:py-6">
+                            
+                            <!-- BACKGROUND VECTOR: Faint Globe Map & Curved Flight Trajectories -->
+                            <div class="absolute inset-0 -top-6 -left-6 -right-6 pointer-events-none flex items-center justify-center opacity-75 sm:opacity-85">
+                                <svg class="w-full h-full max-w-[580px] text-pink-200" viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- Faint Map Shape / Circles -->
+                                    <ellipse cx="250" cy="200" rx="200" ry="140" stroke="#fbcfe8" stroke-width="1.5" stroke-dasharray="6 6" opacity="0.6"/>
+                                    <ellipse cx="250" cy="200" rx="140" ry="140" stroke="#fed7aa" stroke-width="1" opacity="0.4"/>
+                                    
+                                    <!-- Flight Trajectory Path 1 (Top Left to Center) -->
+                                    <path d="M 50 160 C 90 60, 260 40, 370 100" stroke="#ff715b" stroke-width="1.8" stroke-dasharray="5 5" fill="none"/>
+                                    
+                                    <!-- Mini Airplane 1 -->
+                                    <g transform="translate(190, 52) rotate(22) scale(0.8)">
+                                        <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" fill="#ff5722"/>
+                                    </g>
+
+                                    <!-- Flight Trajectory Path 2 (Center to Top Right) -->
+                                    <path d="M 280 110 C 340 70, 420 80, 460 140" stroke="#ff715b" stroke-width="1.8" stroke-dasharray="5 5" fill="none"/>
+                                    
+                                    <!-- Mini Airplane 2 -->
+                                    <g transform="translate(370, 78) rotate(48) scale(0.85)">
+                                        <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" fill="#ff5722"/>
+                                    </g>
+
+                                    <!-- Mini Map Pin Location 1 -->
+                                    <circle cx="110" cy="115" r="4" fill="#ff5722" />
+                                    <!-- Mini Map Pin Location 2 -->
+                                    <circle cx="375" cy="155" r="4" fill="#ff5722" />
+                                </svg>
+                            </div>
+
+                            <!-- KHUNG BỐ CỤC 3 ẢNH: 2 Cột (Cột trái 2 ảnh, Cột phải 1 ảnh dài) -->
+                            <div class="relative z-10 flex items-center justify-center gap-4 sm:gap-6">
+                                
+                                <!-- CỘT CON TRÁI: Ảnh 1 (Santorini) + Ảnh 2 (Mountain Hiker) -->
+                                <div class="flex flex-col gap-4 sm:gap-6 w-1/2">
+                                    
+                                    <!-- ẢNH 1: Santorini Cliffside / Ocean -->
+                                    <div class="relative group">
+                                        <div class="w-full h-36 sm:h-56 lg:h-64 rounded-2xl sm:rounded-[32px] overflow-hidden shadow-card bg-slate-100 ring-4 ring-white">
+                                            <img 
+                                                src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=600&auto=format&fit=crop&q=80" 
+                                                alt="Santorini Greece destination" 
+                                                class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                                                loading="lazy"
+                                            >
+                                        </div>
+
+                                        <!-- Floating Badge: Nút tròn màu hồng có icon máy bay giấy -->
+                                        <div class="absolute -left-3 sm:-left-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-accent text-white flex items-center justify-center shadow-soft-pink ring-2 ring-white floating-element">
+                                            <!-- Paper Airplane Icon -->
+                                            <svg class="w-4 h-4 sm:w-5 sm:h-5 fill-current transform -rotate-12" viewBox="0 0 24 24">
+                                                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+
+                                    <!-- ẢNH 2: Người du lịch ngồi trên mỏm đá ngắm núi tuyết -->
+                                    <div class="relative group">
+                                        <div class="w-full h-32 sm:h-52 lg:h-60 rounded-2xl sm:rounded-[32px] overflow-hidden shadow-card bg-slate-100 ring-4 ring-white">
+                                            <img 
+                                                src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&auto=format&fit=crop&q=80" 
+                                                alt="Mountain adventure destination" 
+                                                class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                                                loading="lazy"
+                                            >
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!-- CỘT CON PHẢI: Ảnh 3 (Cô gái đeo balo) + Badges -->
+                                <div class="relative w-1/2 flex flex-col justify-center">
+                                    
+                                    <!-- ẢNH 3: Cô gái đeo balo ngắm phố cổ Châu Âu -->
+                                    <div class="relative group">
+                                        <div class="w-full h-56 sm:h-80 lg:h-96 rounded-2xl sm:rounded-[32px] overflow-hidden shadow-card bg-slate-100 ring-4 ring-white">
+                                            <img 
+                                                src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?w=600&auto=format&fit=crop&q=80" 
+                                                alt="Backpacker traveling city" 
+                                                class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                                                loading="lazy"
+                                            >
+                                        </div>
+
+                                        <!-- Floating Badge 1: Top Places pill trắng có icon ghim vị trí -->
+                                        <div class="absolute -right-2 sm:-right-4 top-16 sm:top-24 bg-white/95 backdrop-blur-md px-3 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-lg border border-slate-100/80 flex items-center gap-2 floating-element-delayed">
+                                            <!-- Yellow Map Pin Icon -->
+                                            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-accent-yellow fill-current" viewBox="0 0 24 24">
+                                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                            </svg>
+                                            <span class="text-[10px] sm:text-xs font-bold text-dark whitespace-nowrap">Top Places</span>
+                                        </div>
+
+                                        <!-- Floating Badge 2: Nút tròn màu cam có icon người dùng -->
+                                        <div class="absolute -bottom-3 sm:-bottom-4 left-6 sm:left-10 w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-accent-orange text-white flex items-center justify-center shadow-soft-orange ring-2 ring-white floating-element">
+                                            <!-- User silhouette icon -->
+                                            <svg class="w-4 h-4 sm:w-5 sm:h-5 fill-current" viewBox="0 0 24 24">
+                                                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                                            </svg>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- ==================== PARTNER LOGOS / SPONSORS ==================== -->
+            <section class="mt-12 sm:mt-16 lg:mt-20 pt-6 sm:pt-10 border-t border-slate-100/60" aria-label="Đối tác đồng hành">
+                <div class="flex flex-wrap items-center justify-center lg:justify-between gap-6 sm:gap-10 lg:gap-8 opacity-65 hover:opacity-100 transition-opacity duration-300">
+                    
+                    <!-- 1. TripAdvisor -->
+                    <div class="flex items-center gap-2 grayscale hover:grayscale-0 transition cursor-pointer">
+                        <svg class="w-6 h-6 text-[#34E0A1]" viewBox="0 0 24 24" fill="currentColor">
+                            <circle cx="8" cy="14" r="3" fill="none" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="16" cy="14" r="3" fill="none" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="8" cy="14" r="1.2"/>
+                            <circle cx="16" cy="14" r="1.2"/>
+                            <path d="M12 4c-4.4 0-8 2.5-8 6h16c0-3.5-3.6-6-8-6z" fill="none" stroke="currentColor" stroke-width="2"/>
+                            <polygon points="12,11 10,13 14,13"/>
+                        </svg>
+                        <span class="font-extrabold text-base sm:text-lg tracking-tight text-slate-800">tripadvisor</span>
+                    </div>
+
+                    <!-- 2. Expedia -->
+                    <div class="flex items-center gap-1.5 grayscale hover:grayscale-0 transition cursor-pointer">
+                        <div class="w-5 h-5 rounded-full bg-[#FFCC00] flex items-center justify-center">
+                            <svg class="w-3.5 h-3.5 text-slate-900 fill-current transform rotate-45" viewBox="0 0 24 24">
+                                <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
+                            </svg>
+                        </div>
+                        <span class="font-bold text-base sm:text-lg text-slate-800">Expedia</span>
+                    </div>
+
+                    <!-- 3. Booking.com -->
+                    <div class="flex items-center grayscale hover:grayscale-0 transition cursor-pointer">
+                        <span class="font-black text-base sm:text-lg text-[#003580] tracking-tight">
+                            Booking<span class="text-[#008009]">.</span>com
+                        </span>
+                    </div>
+
+                    <!-- 4. Airbnb -->
+                    <div class="flex items-center gap-1.5 grayscale hover:grayscale-0 transition cursor-pointer">
+                        <svg class="w-5 h-5 text-[#FF5A5F] fill-current" viewBox="0 0 24 24">
+                            <path d="M12 2C8.5 2 5.5 4.5 5.5 8.5c0 3.2 2.3 6.9 6.5 12.5.4.5 1.1.5 1.5 0 4.2-5.6 6.5-9.3 6.5-12.5C20 4.5 17 2 12 2zm0 10c-1.7 0-3-1.3-3-3s1.3-3 3-3 3 1.3 3 3-1.3 3-3 3z"/>
+                        </svg>
+                        <span class="font-bold text-base sm:text-lg text-slate-800 tracking-tight">airbnb</span>
+                    </div>
+
+                    <!-- 5. Orbitz -->
+                    <div class="flex items-center grayscale hover:grayscale-0 transition cursor-pointer">
+                        <span class="font-black italic text-base sm:text-xl text-slate-900 tracking-tighter">
+                            ORBITZ
+                        </span>
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+
+    <!-- JAVASCRIPT: TOGGLE MENU CHO TABLET & MOBILE -->
+    <script>
+        function toggleMobileMenu() {
+            const drawer = document.getElementById('mobile-drawer');
+            if (drawer.classList.contains('hidden')) {
+                drawer.classList.remove('hidden');
+            } else {
+                drawer.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap');
+body{
+    background: #f5f5f5;
+    font-family: "Google Sans Flex", sans-serif;
+}
+.container{
+    width: 330px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 16px 40px #17203a22;
+    border-top: 5px solid #ff6b35;
+}
+.role{
+    text-transform:uppercase;
+    font-weight:800;
+    color:#ff6b35;
+    font-size:12px;
+}
+button{
+    background:#ff6b35;
+    padding: 9px 14px;
+    color: white;
+    border: none;
+    border-radius: 65px;
+    cursor: pointer;
+}

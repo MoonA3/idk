@@ -1,0 +1,408 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  background: #fff;
+  color: #111;
+  font-family: "Google Sans Flex", Arial, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.dashboard {
+  position: relative;
+  display: grid;
+  height: 100vh;
+  min-height: 540px;
+  grid-template-columns: 19% 1fr;
+  align-items: center;
+  gap: 3%;
+  padding: 0 3% 0 2.7%;
+  overflow: hidden;
+}
+
+.brand {
+  position: absolute;
+  top: 6%;
+  left: 2.7%;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.sidebar {
+  position: relative;
+  top: 3%;
+  display: flex;
+  height: 77vh;
+  flex-direction: column;
+  padding: 6vh 10px 12px;
+  border-radius: 5px;
+  background: #050507;
+  color: #fff;
+}
+
+.side-nav {
+  display: grid;
+  gap: 8px;
+}
+
+.side-link {
+  display: flex;
+  min-height: 42px;
+  align-items: center;
+  gap: 8px;
+  padding: 0 7px;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.side-link span {
+  width: 14px;
+  text-align: center;
+}
+
+.side-link:hover,
+.side-link.active {
+  background: #a516ed;
+}
+
+.logout {
+  margin-top: auto;
+  margin-bottom: 7vh;
+}
+
+.main-content {
+  position: relative;
+  isolation: isolate;
+  min-width: 0;
+  height: 100vh;
+  padding-top: 5vh;
+}
+
+.strips {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.topbar,
+.top-nav,
+.account,
+.dashboard-heading {
+  display: flex;
+  align-items: center;
+}
+
+.topbar {
+  min-height: 34px;
+  justify-content: space-between;
+}
+
+.top-nav {
+  gap: 30px;
+  margin-left: 18px;
+}
+
+.top-nav a {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.top-nav a:first-child {
+  text-decoration: underline;
+}
+
+.account {
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.notification {
+  padding: 4px;
+  border: 0;
+  background: none;
+  font-size: 16px;
+}
+
+.avatar {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 2px solid #eee;
+  border-radius: 50%;
+  background: #33252c;
+  color: #fff;
+  font-size: 9px;
+  font-weight: bold;
+}
+
+.account-name {
+  color: #8d10da;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.dashboard-heading {
+  position: relative;
+  align-items: flex-start;
+  margin: 5.5vh 0 2vh;
+}
+
+h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.feedback-link {
+  position: absolute;
+  top: -11px;
+  right: 0;
+  padding: 9px 11px;
+  border: 1px solid #c27be8;
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+.quick-actions {
+  display: flex;
+  gap: 24px;
+}
+
+.quick-actions a {
+  display: grid;
+  min-height: 64px;
+  place-items: center;
+  padding: 6px 16px;
+  border-radius: 5px;
+  background: #050507;
+  box-shadow: 0 3px 5px #0003;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.quick-actions a:hover,
+.loan-card:hover,
+.status-link:hover {
+  background: #8510bd;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 28%;
+  align-items: start;
+  gap: 3%;
+  margin-top: 4.3vh;
+}
+
+.primary-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 11vh;
+  padding-top: 5vh;
+}
+
+.loan-actions {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.loan-card {
+  display: grid;
+  min-height: 31vh;
+  place-items: center;
+  padding: 10px;
+  border-radius: 7px;
+  background: #05050b;
+  box-shadow: 2px 4px 5px #0005;
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.status-link {
+  padding: 3vh 5vw;
+  border: 1px solid #bd5de6;
+  border-radius: 5px;
+  background: #050507;
+  box-shadow: 0 3px 5px #0003;
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.updates {
+  min-height: 49vh;
+  padding: 16px 13px;
+  border: 1px solid #78a9bb;
+  border-radius: 5px;
+  background: #050507;
+  box-shadow: 2px 4px 5px #0004;
+  color: #fff;
+}
+
+.updates h2 {
+  margin: 0 0 12px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.updates p {
+  margin: 0 0 10px;
+  color: #e4e4e7;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.chat-link {
+  display: block;
+  width: fit-content;
+  margin: 8px 5px 0 auto;
+  color: #b565d4;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.chat-link span {
+  display: grid;
+  width: 22px;
+  height: 18px;
+  place-items: center;
+  margin: 6px auto 0;
+  border-radius: 12px;
+  background: #bb7bd3;
+  color: #fff;
+  font-size: 12px;
+}
+
+@media (max-width: 560px) {
+  .dashboard {
+    height: auto;
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 12px;
+    padding: 12px;
+    overflow: visible;
+  }
+
+  .brand {
+    position: static;
+    margin-bottom: 10px;
+  }
+
+  .sidebar {
+    top: 0;
+    height: auto;
+    padding: 12px;
+  }
+
+  .side-nav {
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+  }
+
+  .side-link {
+    min-height: 34px;
+    font-size: 11px;
+  }
+
+  .logout {
+    margin: 8px 0 0;
+  }
+
+  .main-content {
+    height: auto;
+    min-height: 600px;
+    overflow: hidden;
+  }
+
+  .quick-actions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .quick-actions a {
+    min-height: 48px;
+    padding: 6px;
+    font-size: 12px;
+  }
+
+  .topbar {
+    flex-wrap: wrap;
+  }
+
+  .top-nav {
+    gap: 14px;
+    margin-left: 0;
+  }
+
+  .top-nav a {
+    font-size: 10px;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr 34%;
+  }
+
+  .primary-content {
+    gap: 20px;
+    padding-top: 16px;
+  }
+
+  .loan-card {
+    min-height: 150px;
+    font-size: 15px;
+  }
+
+  .status-link {
+    padding: 12px 18px;
+    font-size: 12px;
+  }
+
+  .updates {
+    min-height: 220px;
+  }
+}
+
+@media (max-width: 400px) {
+  .quick-actions,
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .top-nav {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .primary-content {
+    padding-top: 0;
+  }
+
+  .updates {
+    min-height: 0;
+  }
+}

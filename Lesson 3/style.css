@@ -1,0 +1,29 @@
+*{
+    box-sizing: border-box;
+}
+.container{
+    width: 320px;
+    height: auto;
+    border: 3px solid #ccc;
+    padding: 20px;
+    border-radius: 20px;
+    padding-bottom: 20px;
+}
+.role{
+    width: 260px;
+    height: 80px;
+    border-radius: 20px;
+    background-color: rgb(217, 213, 213);
+    text-align: center;
+    line-height: 80px;
+}
+button{
+    width: 104px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight:bold;
+}
